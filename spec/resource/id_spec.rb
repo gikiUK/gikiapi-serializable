@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.id' do
+describe GikiAPI::Serializable::Resource, '.id' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
       id { 'foo' }
     end
@@ -12,7 +12,7 @@ describe JSONAPI::Serializable::Resource, '.id' do
   end
 
   it 'forwards to @object by default' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
     end
     user = User.new(id: 'foo')

@@ -1,4 +1,4 @@
-module JSONAPI
+module GikiAPI
   module Serializable
     class Relationship
       module DSL
@@ -14,7 +14,7 @@ module JSONAPI
           # NOTE(beauby): Lazify computation since it is only needed when
           #   the corresponding relationship is included.
           @_resources_block = proc do
-            JSONAPI::Serializable.resources_for(yield, @_exposures, @_class)
+            GikiAPI::Serializable.resources_for(yield, @_exposures, @_class)
           end
         end
 
@@ -60,8 +60,8 @@ module JSONAPI
 
         # Declare a link for this relationship. The properties of the link are set
         #   by providing a block in which the DSL methods of
-        #   +JSONAPI::Serializable::Link+ are called.
-        # @see JSONAPI::Serialiable::Link
+        #   +GikiAPI::Serializable::Link+ are called.
+        # @see GikiAPI::Serializable::Link
         #
         # @param [Symbol] name The key of the link.
         # @yieldreturn [Hash, String, nil] The block to compute the value, if any.

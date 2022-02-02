@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.attribute' do
+describe GikiAPI::Serializable::Resource, '.attribute' do
   let(:object)   { User.new(name: 'foo') }
   let(:resource) { klass.new(object: object) }
 
@@ -8,7 +8,7 @@ describe JSONAPI::Serializable::Resource, '.attribute' do
 
   context 'when supplied a block value' do
     let(:klass) do
-      Class.new(JSONAPI::Serializable::Resource) do
+      Class.new(GikiAPI::Serializable::Resource) do
         type 'foo'
         attribute(:name) { 'foo' }
       end
@@ -19,7 +19,7 @@ describe JSONAPI::Serializable::Resource, '.attribute' do
 
   context 'when defining multiple attributes' do
     let(:klass) do
-      Class.new(JSONAPI::Serializable::Resource) do
+      Class.new(GikiAPI::Serializable::Resource) do
         type 'foo'
         attribute(:name)    { 'foo' }
         attribute(:address) { 'bar' }
@@ -31,7 +31,7 @@ describe JSONAPI::Serializable::Resource, '.attribute' do
 
   context 'when redefining attributes' do
     let(:klass) do
-      Class.new(JSONAPI::Serializable::Resource) do
+      Class.new(GikiAPI::Serializable::Resource) do
         type 'foo'
         attribute(:name) { 'foo' }
         attribute(:name) { 'bar' }
@@ -43,7 +43,7 @@ describe JSONAPI::Serializable::Resource, '.attribute' do
 
   context 'when no block supplied' do
     let(:klass) do
-      Class.new(JSONAPI::Serializable::Resource) do
+      Class.new(GikiAPI::Serializable::Resource) do
         type 'foo'
         attribute :name
       end
@@ -53,7 +53,7 @@ describe JSONAPI::Serializable::Resource, '.attribute' do
   end
 
   context 'when inheriting' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
       attribute :name
     end

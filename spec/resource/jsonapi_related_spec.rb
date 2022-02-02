@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '#jsonapi_related' do
+describe GikiAPI::Serializable::Resource, '#jsonapi_related' do
   let(:posts) { [Post.new(id: 1), Post.new(id: 2)] }
   let(:user) do
     User.new(id: 'foo', name: 'Lucas', address: '22 Ruby drive', posts: posts)

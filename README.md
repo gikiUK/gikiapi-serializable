@@ -1,5 +1,7 @@
-# jsonapi-serializable
+# giki-serializable
 Ruby gem for building and rendering [JSON API](http://jsonapi.org) documents.
+
+Giki-namespaced verson of the `jsonapi-serializable` gem.
 
 ## Status
 

@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Renderer, '#render_relationship' do
+describe GikiAPI::Serializable::Renderer, '#render_relationship' do
   let(:posts) { [Post.new(id: 1), Post.new(id: 2)] }
   let(:user) do
     User.new(id: 'foo', name: 'Lucas', address: '22 Ruby drive', posts: posts)
   end
 
   it 'renders a relationship document' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
 
       has_many(:posts) do
@@ -34,7 +34,7 @@ describe JSONAPI::Serializable::Renderer, '#render_relationship' do
   end
 
   it 'omits the meta key from a relationship document without meta' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
 
       has_many(:posts) do
@@ -57,7 +57,7 @@ describe JSONAPI::Serializable::Renderer, '#render_relationship' do
   end
 
   it 'omits the meta key from a relationship document when meta is nil' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
 
       has_many(:posts) do
@@ -81,7 +81,7 @@ describe JSONAPI::Serializable::Renderer, '#render_relationship' do
   end
 
   it 'omits the meta key from a relationship document when meta block evaluates to nil' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
 
       has_many(:posts) do
@@ -105,7 +105,7 @@ describe JSONAPI::Serializable::Renderer, '#render_relationship' do
   end
 
   it 'can interigate included? in the meta block' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
 
       has_many(:posts) do
@@ -114,7 +114,7 @@ describe JSONAPI::Serializable::Renderer, '#render_relationship' do
         end
       end
     end
-    expect_any_instance_of(JSONAPI::Serializable::Relationship).to receive(:included?)
+    expect_any_instance_of(GikiAPI::Serializable::Relationship).to receive(:included?)
     subject.render(user, class: { User: klass, Post: SerializablePost })
   end
 end

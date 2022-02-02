@@ -3,7 +3,7 @@ require 'bundler/setup'
 
 require 'benchmark/ips'
 require 'json'
-require 'jsonapi/serializable'
+require 'gikiapi/serializable'
 
 class Model
   def initialize(params = {})
@@ -20,16 +20,15 @@ class User < Model
 end
 
 class Post < Model
-  attr_accessor :id
-  attr_accessor(*ATTR_NAMES)
+  attr_accessor :id, *ATTR_NAMES
 end
 
-class SerializableUser < JSONAPI::Serializable::Resource
+class SerializableUser < GikiAPI::Serializable::Resource
   type 'users'
   relationship :posts, class: 'SerializablePost'
 end
 
-class SerializablePost < JSONAPI::Serializable::Resource
+class SerializablePost < GikiAPI::Serializable::Resource
   type 'posts'
   attributes(*ATTR_NAMES)
 end
@@ -56,7 +55,7 @@ end
 
 Benchmark.ips do |x|
   cache = Cache.new
-  renderer = JSONAPI::Serializable::Renderer.new
+  renderer = GikiAPI::Serializable::Renderer.new
   x.report('No cache') do
     renderer.render(user, class: { User: SerializableUser, Post: SerializablePost }, include: [:posts])
   end

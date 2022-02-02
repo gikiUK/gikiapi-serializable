@@ -1,4 +1,4 @@
-module JSONAPI
+module GikiAPI
   module Serializable
     class Link
       def self.as_jsonapi(exposures = {}, &block)

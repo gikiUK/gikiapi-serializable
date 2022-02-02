@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable, '.resources_for' do
+describe GikiAPI::Serializable, '.resources_for' do
   let(:inferrer) { Hash[Post: API::SerializablePost] }
 
   it 'returns nil if the object is nil' do
@@ -11,18 +11,18 @@ describe JSONAPI::Serializable, '.resources_for' do
     resources = described_class.resources_for([Post.new], {}, inferrer)
 
     expect(resources).to be_a(Array)
-    expect(resources[0]).to be_a(JSONAPI::Serializable::Resource)
+    expect(resources[0]).to be_a(GikiAPI::Serializable::Resource)
   end
 
   it 'returns a resource' do
     resources = described_class.resources_for(Post.new, {}, inferrer)
 
-    expect(resources).to be_a(JSONAPI::Serializable::Resource)
+    expect(resources).to be_a(GikiAPI::Serializable::Resource)
   end
 
   it 'raises an exception if unable to infer serializable class' do
     expect {
       described_class.resources_for(User.new, {}, inferrer)
-    }.to raise_error(JSONAPI::Serializable::UndefinedSerializableClass)
+    }.to raise_error(GikiAPI::Serializable::UndefinedSerializableClass)
   end
 end

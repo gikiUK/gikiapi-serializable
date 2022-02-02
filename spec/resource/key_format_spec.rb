@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource do
+describe GikiAPI::Serializable::Resource do
   let(:klass) do
-    Class.new(JSONAPI::Serializable::Resource) do
+    Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
       id { 'bar' }
     end
@@ -20,7 +20,7 @@ describe JSONAPI::Serializable::Resource do
 
     before do
       klass.class_eval do
-        extend JSONAPI::Serializable::Resource::KeyFormat
+        extend GikiAPI::Serializable::Resource::KeyFormat
         key_format ->(k) { k.to_s.capitalize }
         attribute :name
         attribute :address
@@ -63,7 +63,7 @@ describe JSONAPI::Serializable::Resource do
 
   context 'when KeyFormat is prepended' do
     it 'outputs a deprecation warning' do
-      expect { klass.prepend JSONAPI::Serializable::Resource::KeyFormat }
+      expect { klass.prepend GikiAPI::Serializable::Resource::KeyFormat }
         .to output(/DERPRECATION WARNING/).to_stderr
     end
   end

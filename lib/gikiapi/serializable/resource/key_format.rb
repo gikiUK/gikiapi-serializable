@@ -1,12 +1,12 @@
-module JSONAPI
+module GikiAPI
   module Serializable
     class Resource
       # Extension for handling automatic key formatting of
       #   attributes/relationships.
       #
       # @example
-      #   class SerializableUser < JSONAPI::Serializable::Resource
-      #     extend JSONAPI::Serializable::Resource::KeyFormat
+      #   class SerializableUser < GikiAPI::Serializable::Resource
+      #     extend GikiAPI::Serializable::Resource::KeyFormat
       #     key_format -> (key) { key.camelize }
       #
       #     attribute :user_name

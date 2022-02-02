@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Error, '.id' do
+describe GikiAPI::Serializable::Error, '.id' do
   it 'accepts a string' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       id 'foo'
     end
     error = klass.new
@@ -13,9 +13,9 @@ describe JSONAPI::Serializable::Error, '.id' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.id' do
+describe GikiAPI::Serializable::Error, '.id' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       id { 'foo' }
     end
     error = klass.new
@@ -26,9 +26,9 @@ describe JSONAPI::Serializable::Error, '.id' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.status' do
+describe GikiAPI::Serializable::Error, '.status' do
   it 'accepts a string' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       status 'foo'
     end
     error = klass.new
@@ -39,9 +39,9 @@ describe JSONAPI::Serializable::Error, '.status' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.status' do
+describe GikiAPI::Serializable::Error, '.status' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       status { 'foo' }
     end
     error = klass.new
@@ -52,9 +52,9 @@ describe JSONAPI::Serializable::Error, '.status' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.code' do
+describe GikiAPI::Serializable::Error, '.code' do
   it 'accepts a string' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       code 'foo'
     end
     error = klass.new
@@ -65,9 +65,9 @@ describe JSONAPI::Serializable::Error, '.code' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.code' do
+describe GikiAPI::Serializable::Error, '.code' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       code { 'foo' }
     end
     error = klass.new
@@ -78,9 +78,9 @@ describe JSONAPI::Serializable::Error, '.code' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.title' do
+describe GikiAPI::Serializable::Error, '.title' do
   it 'accepts a string' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       title 'foo'
     end
     error = klass.new
@@ -91,9 +91,9 @@ describe JSONAPI::Serializable::Error, '.title' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.title' do
+describe GikiAPI::Serializable::Error, '.title' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       title { 'foo' }
     end
     error = klass.new
@@ -104,9 +104,9 @@ describe JSONAPI::Serializable::Error, '.title' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.detail' do
+describe GikiAPI::Serializable::Error, '.detail' do
   it 'accepts a string' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       detail 'foo'
     end
     error = klass.new
@@ -117,9 +117,9 @@ describe JSONAPI::Serializable::Error, '.detail' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.detail' do
+describe GikiAPI::Serializable::Error, '.detail' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       detail { 'foo' }
     end
     error = klass.new
@@ -130,9 +130,9 @@ describe JSONAPI::Serializable::Error, '.detail' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.meta' do
+describe GikiAPI::Serializable::Error, '.meta' do
   it 'accepts a string' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       meta 'foo'
     end
     error = klass.new
@@ -143,9 +143,9 @@ describe JSONAPI::Serializable::Error, '.meta' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.meta' do
+describe GikiAPI::Serializable::Error, '.meta' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       meta { 'foo' }
     end
     error = klass.new
@@ -156,9 +156,9 @@ describe JSONAPI::Serializable::Error, '.meta' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.links' do
+describe GikiAPI::Serializable::Error, '.links' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       link(:about) do
         href 'foo://bar'
         meta foo: 'bar'
@@ -172,9 +172,9 @@ describe JSONAPI::Serializable::Error, '.links' do
   end
 end
 
-describe JSONAPI::Serializable::Error, '.source' do
+describe GikiAPI::Serializable::Error, '.source' do
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       source do
         pointer 'foo'
         parameter 'bar'

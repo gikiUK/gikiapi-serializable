@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
+describe GikiAPI::Serializable::Resource, '#as_jsonapi' do
   let(:posts) { [Post.new(id: 1), Post.new(id: 2)] }
   let(:user) do
     User.new(id: 'foo', name: 'Lucas', address: '22 Ruby drive', posts: posts)
@@ -47,7 +47,7 @@ describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
 
   it 'omits relationships member if none rendered' do
     resource = SerializableUser.new(object: user)
-    actual = resource.as_jsonapi(fields: [:name, :address])
+    actual = resource.as_jsonapi(fields: %i[name address])
     expected = {
       type: :users,
       id: 'foo',
@@ -75,7 +75,7 @@ describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
   end
 
   it 'omits linkage data for non-included relationships with links' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       attribute :name
       relationship :posts do
@@ -104,7 +104,7 @@ describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
   end
 
   it 'omits linkage data for non-included relationships with meta' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       attribute :name
       relationship :posts do
@@ -129,7 +129,7 @@ describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
   end
 
   it 'omits linkage data for non-included relationships no links nor meta' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       attribute :name
       relationship :posts
@@ -152,7 +152,7 @@ describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
   end
 
   it 'explicitly sets linkage data' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       attribute :name
       relationship :posts do
@@ -179,7 +179,7 @@ describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
   end
 
   it 'sets linkage data for included relationships' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       attribute :name
       relationship :posts, class: SerializablePost do
@@ -209,7 +209,7 @@ describe JSONAPI::Serializable::Resource, '#as_jsonapi' do
   end
 
   it 'handles empty to-one relationships' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts do
         data { nil }

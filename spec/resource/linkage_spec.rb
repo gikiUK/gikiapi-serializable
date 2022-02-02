@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.linkage' do
+describe GikiAPI::Serializable::Resource, '.linkage' do
   let(:posts) { [Post.new(id: 1), Post.new(id: 2)] }
   let(:user) { User.new(id: 'foo', posts: posts) }
   let(:inferrer) do
@@ -8,7 +8,7 @@ describe JSONAPI::Serializable::Resource, '.linkage' do
   end
 
   it 'defaults to forcing standard linkage' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts, class: SerializablePost do
         linkage always: true
@@ -26,7 +26,7 @@ describe JSONAPI::Serializable::Resource, '.linkage' do
   end
 
   it 'overrides standard linkage' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts, class: SerializablePost do
         linkage do
@@ -45,7 +45,7 @@ describe JSONAPI::Serializable::Resource, '.linkage' do
   end
 
   it 'does not include overriden linkage unless included' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts, class: SerializablePost do
         linkage do

@@ -1,12 +1,12 @@
-require 'jsonapi/serializable/resource/dsl'
+require 'gikiapi/serializable/resource/dsl'
 
-require 'jsonapi/serializable/link'
-require 'jsonapi/serializable/relationship'
+require 'gikiapi/serializable/link'
+require 'gikiapi/serializable/relationship'
 
-require 'jsonapi/serializable/resource/conditional_fields'
-require 'jsonapi/serializable/resource/key_format'
+require 'gikiapi/serializable/resource/conditional_fields'
+require 'gikiapi/serializable/resource/key_format'
 
-module JSONAPI
+module GikiAPI
   module Serializable
     class Resource
       extend DSL
@@ -58,7 +58,7 @@ module JSONAPI
           hash[:attributes]    = attrs if attrs.any?
           hash[:relationships] = rels  if rels.any?
           hash[:links] = links if links.any?
-          hash[:meta]  = @_meta  unless @_meta.nil?
+          hash[:meta]  = @_meta unless @_meta.nil?
         end
       end
       # rubocop:enable Metrics/AbcSize, Metrics/MethodLength

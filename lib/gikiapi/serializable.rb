@@ -1,8 +1,8 @@
-module JSONAPI
+module GikiAPI
   module Serializable
-    require 'jsonapi/serializable/error'
-    require 'jsonapi/serializable/resource'
-    require 'jsonapi/serializable/renderer'
+    require 'gikiapi/serializable/error'
+    require 'gikiapi/serializable/resource'
+    require 'gikiapi/serializable/renderer'
 
     # Error raised when there's no serializable class defined for resource.
     class UndefinedSerializableClass < StandardError; end

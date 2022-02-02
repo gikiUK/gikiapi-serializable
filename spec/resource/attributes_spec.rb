@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.attributes' do
+describe GikiAPI::Serializable::Resource, '.attributes' do
   it 'defines multiple attributes' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
       attributes :name, :address
     end

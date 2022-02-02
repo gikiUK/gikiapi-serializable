@@ -1,4 +1,4 @@
-module JSONAPI
+module GikiAPI
   module Serializable
     class Resource
       module DSL
@@ -83,9 +83,9 @@ module JSONAPI
 
         # Declare a link for this resource. The properties of the link are set
         #   by providing a block in which the DSL methods of
-        #   +JSONAPI::Serializable::Link+ are called, or the value of the link
+        #   +GikiAPI::Serializable::Link+ are called, or the value of the link
         #   is returned directly.
-        # @see JSONAPI::Serialiable::Link
+        # @see GikiAPI::Serializable::Link
         #
         # @param [Symbol] name The key of the link.
         # @yieldreturn [Hash, String, nil] The block to compute the value, if
@@ -126,8 +126,8 @@ module JSONAPI
 
         # Declare a relationship for this resource. The properties of the
         #   relationship are set by providing a block in which the DSL methods
-        #   of +JSONAPI::Serializable::Relationship+ are called.
-        # @see JSONAPI::Serializable::Relationship
+        #   of +GikiAPI::Serializable::Relationship+ are called.
+        # @see GikiAPI::Serializable::Relationship
         #
         # @param [Symbol] name The key of the relationship.
         # @param [Hash] options The options for the relationship.

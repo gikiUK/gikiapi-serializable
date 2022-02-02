@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource do
+describe GikiAPI::Serializable::Resource do
   let(:klass) do
-    Class.new(JSONAPI::Serializable::Resource) do
+    Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
       id { 'bar' }
     end
@@ -16,7 +16,7 @@ describe JSONAPI::Serializable::Resource do
   context 'when the attribute is conditional' do
     before do
       klass.class_eval do
-        extend JSONAPI::Serializable::Resource::ConditionalFields
+        extend GikiAPI::Serializable::Resource::ConditionalFields
       end
     end
 
@@ -70,7 +70,7 @@ describe JSONAPI::Serializable::Resource do
   context 'when relationship is conditional' do
     before do
       klass.class_eval do
-        extend JSONAPI::Serializable::Resource::ConditionalFields
+        extend GikiAPI::Serializable::Resource::ConditionalFields
 
         relationship :posts, if: -> { false }
       end
@@ -88,7 +88,7 @@ describe JSONAPI::Serializable::Resource do
   context 'when a link is conditional' do
     before do
       klass.class_eval do
-        extend JSONAPI::Serializable::Resource::ConditionalFields
+        extend GikiAPI::Serializable::Resource::ConditionalFields
 
         link :self, if: proc { @conditional } do
           'https://example.com/users/42'
@@ -114,7 +114,7 @@ describe JSONAPI::Serializable::Resource do
   context 'when inheriting' do
     before do
       klass.class_eval do
-        extend JSONAPI::Serializable::Resource::ConditionalFields
+        extend GikiAPI::Serializable::Resource::ConditionalFields
 
         relationship :posts, if: -> { false }
       end
@@ -135,7 +135,7 @@ describe JSONAPI::Serializable::Resource do
   context 'when a field and a link have the same name' do
     before do
       klass.class_eval do
-        extend JSONAPI::Serializable::Resource::ConditionalFields
+        extend GikiAPI::Serializable::Resource::ConditionalFields
 
         attribute :name, if: proc { @conditional } do
           'attribute'

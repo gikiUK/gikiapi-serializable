@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.link' do
+describe GikiAPI::Serializable::Resource, '.link' do
   it 'defines links' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       link :self do
         "http://api.example.com/users/#{@object.id}"

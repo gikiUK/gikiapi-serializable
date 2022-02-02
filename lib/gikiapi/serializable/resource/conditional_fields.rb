@@ -1,11 +1,11 @@
-module JSONAPI
+module GikiAPI
   module Serializable
     class Resource
       # Extension for handling conditional fields in serializable resources.
       #
       # @usage
-      #   class SerializableUser < JSONAPI::Serializable::Resource
-      #     extend JSONAPI::Serializable::Resource::ConditionalFields
+      #   class SerializableUser < GikiAPI::Serializable::Resource
+      #     extend GikiAPI::Serializable::Resource::ConditionalFields
       #
       #     attribute :email, if: -> { @current_user.admin? }
       #     has_many :friends, unless: -> { @object.private_profile? }
@@ -16,7 +16,7 @@ module JSONAPI
           warn <<-EOT
   DERPRECATION WARNING (called from #{caller_locations(1...2).first}):
   Prepending `#{name}' is deprecated and will be removed in future releases. Use `Object#extend' instead.
-  EOT
+          EOT
 
           klass.extend self
         end
@@ -25,8 +25,7 @@ module JSONAPI
           klass.class_eval do
             include InstanceMethods
             class << self
-              attr_accessor :field_condition_blocks
-              attr_accessor :link_condition_blocks
+              attr_accessor :field_condition_blocks, :link_condition_blocks
             end
             self.field_condition_blocks ||= {}
             self.link_condition_blocks  ||= {}

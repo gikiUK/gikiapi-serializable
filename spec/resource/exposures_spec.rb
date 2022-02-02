@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource do
+describe GikiAPI::Serializable::Resource do
   let(:posts) { [Post.new(id: 1), Post.new(id: 2)] }
   let(:user) { User.new(id: 'foo', posts: posts) }
 
   it 'exposes exposures in .id' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       id { @foo }
     end
@@ -17,7 +17,7 @@ describe JSONAPI::Serializable::Resource do
   end
 
   it 'exposes exposures in .meta' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       meta do
         { foo: @foo }
@@ -31,7 +31,7 @@ describe JSONAPI::Serializable::Resource do
   end
 
   it 'exposes exposures in .link' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       link(:self) { @foo }
     end
@@ -43,7 +43,7 @@ describe JSONAPI::Serializable::Resource do
   end
 
   it 'exposes exposures in .attribute' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       attribute :foo do
         @foo
@@ -59,7 +59,7 @@ describe JSONAPI::Serializable::Resource do
   end
 
   it 'exposes exposures in .relationship' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts do
         data do
@@ -92,11 +92,11 @@ describe JSONAPI::Serializable::Resource do
   end
 
   it 'forwards exposures to related resources' do
-    post_klass = Class.new(JSONAPI::Serializable::Resource) do
+    post_klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'posts'
       id { @foo }
     end
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts, class: post_klass
     end

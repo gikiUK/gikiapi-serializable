@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.relationship' do
+describe GikiAPI::Serializable::Resource, '.relationship' do
   let(:posts) { [Post.new(id: 1), Post.new(id: 2)] }
   let(:user) { User.new(id: 'foo', posts: posts) }
 
   it 'forwards to @object by default' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts
     end
@@ -21,7 +21,7 @@ describe JSONAPI::Serializable::Resource, '.relationship' do
   end
 
   it 'supports overriding related resources with objects' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts do
         data { @object.posts.reverse }
@@ -39,7 +39,7 @@ describe JSONAPI::Serializable::Resource, '.relationship' do
   end
 
   it 'supports meta' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts do
         meta foo: 'bar'
@@ -58,7 +58,7 @@ describe JSONAPI::Serializable::Resource, '.relationship' do
   end
 
   it 'supports links' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts do
         link :self do
@@ -89,7 +89,7 @@ describe JSONAPI::Serializable::Resource, '.relationship' do
   end
 
   it 'supports overriding linkage data' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'users'
       relationship :posts do
         linkage do

@@ -1,6 +1,6 @@
 require 'jsonapi/renderer'
 
-module JSONAPI
+module GikiAPI
   module Serializable
     class Renderer
       def initialize(renderer = JSONAPI::Renderer.new)
@@ -42,7 +42,7 @@ module JSONAPI
         exposures = exposures.merge(_class: klass)
 
         resources =
-          JSONAPI::Serializable.resources_for(resources, exposures, klass)
+          GikiAPI::Serializable.resources_for(resources, exposures, klass)
 
         @renderer.render(options.merge(data: resources))
       end
@@ -58,7 +58,7 @@ module JSONAPI
       # @return [Hash]
       #
       # @example
-      #   error = JSONAPI::Serializable::Error.create(id: 'foo', title: 'bar')
+      #   error = GikiAPI::Serializable::Error.create(id: 'foo', title: 'bar')
       #   renderer.render([error])
       #   # => { errors: [{ id: 'foo', title: 'bar' }] }
       def render_errors(errors, options = {})
@@ -67,7 +67,7 @@ module JSONAPI
         exposures = options.delete(:expose) || {}
 
         errors =
-          JSONAPI::Serializable.resources_for(errors, exposures, klass)
+          GikiAPI::Serializable.resources_for(errors, exposures, klass)
 
         @renderer.render(options.merge(errors: errors))
       end

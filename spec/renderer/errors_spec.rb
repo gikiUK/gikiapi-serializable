@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Renderer, '#render_errors' do
+describe GikiAPI::Serializable::Renderer, '#render_errors' do
   let(:errors) do
     [
       { id: 'foo', title: 'bar' },
@@ -9,7 +9,7 @@ describe JSONAPI::Serializable::Renderer, '#render_errors' do
   end
 
   it 'renders an error document' do
-    klass = Class.new(JSONAPI::Serializable::Error) do
+    klass = Class.new(GikiAPI::Serializable::Error) do
       id { @object[:id] }
       title { @object[:title] }
     end

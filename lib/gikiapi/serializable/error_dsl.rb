@@ -1,4 +1,4 @@
-module JSONAPI
+module GikiAPI
   module Serializable
     module ErrorDSL
       def self.included(base)

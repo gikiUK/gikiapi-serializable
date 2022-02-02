@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.meta' do
+describe GikiAPI::Serializable::Resource, '.meta' do
   it 'accepts a hash' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
       meta foo: 'bar'
     end
@@ -16,7 +16,7 @@ describe JSONAPI::Serializable::Resource, '.meta' do
   end
 
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
       meta do
         { foo: 'bar' }

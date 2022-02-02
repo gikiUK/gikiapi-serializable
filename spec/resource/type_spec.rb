@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JSONAPI::Serializable::Resource, '.type' do
+describe GikiAPI::Serializable::Resource, '.type' do
   it 'accepts a symbol' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type :foo
     end
     resource = klass.new(object: User.new)
@@ -11,7 +11,7 @@ describe JSONAPI::Serializable::Resource, '.type' do
   end
 
   it 'accepts a string and symbolizes it' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type 'foo'
     end
     resource = klass.new(object: User.new)
@@ -20,7 +20,7 @@ describe JSONAPI::Serializable::Resource, '.type' do
   end
 
   it 'accepts a block' do
-    klass = Class.new(JSONAPI::Serializable::Resource) do
+    klass = Class.new(GikiAPI::Serializable::Resource) do
       type { 'foo' }
     end
     resource = klass.new(object: User.new)
@@ -29,7 +29,7 @@ describe JSONAPI::Serializable::Resource, '.type' do
   end
 
   it 'defaults to :unknown' do
-    klass = Class.new(JSONAPI::Serializable::Resource)
+    klass = Class.new(GikiAPI::Serializable::Resource)
     resource = klass.new(object: User.new)
 
     expect(resource.jsonapi_type).to eq(:unknown)

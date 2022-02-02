@@ -1,7 +1,7 @@
-require 'jsonapi/serializable/link'
-require 'jsonapi/serializable/error_dsl'
+require 'gikiapi/serializable/link'
+require 'gikiapi/serializable/error_dsl'
 
-module JSONAPI
+module GikiAPI
   module Serializable
     class ErrorSource
       def self.as_jsonapi(params = {}, &block)
@@ -49,7 +49,7 @@ module JSONAPI
 
       def as_jsonapi
         hash = links.any? ? { links: links } : {}
-        [:id, :status, :code, :title, :detail, :meta, :source]
+        %i[id status code title detail meta source]
           .each_with_object(hash) do |key, h|
           value = send(key)
           h[key] = value unless value.nil?
@@ -67,11 +67,12 @@ module JSONAPI
       def source
         return @_source if @_source
         return if self.class.source_block.nil?
+
         @_source = ErrorSource.as_jsonapi(@_exposures,
                                           &self.class.source_block)
       end
 
-      [:id, :status, :code, :title, :detail, :meta].each do |key|
+      %i[id status code title detail meta].each do |key|
         define_method(key) do
           unless instance_variable_defined?("@_#{key}")
             block = self.class.send("#{key}_block")
